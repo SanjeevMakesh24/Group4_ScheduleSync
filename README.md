@@ -1,2 +1,3 @@
-CS 3354 Group 4
+## CS 3354 Group 4
+
 ScheduleSync
