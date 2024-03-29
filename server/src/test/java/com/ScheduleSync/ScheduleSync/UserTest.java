@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UserTest {
     //userID,password,email,username,name
 
-
     User testCase1;
     User testCase2 = new User("user2","xyz","testemail@email.com","anything2","John B");
     User testCase3 = new User("user3","","testemail@email.com","anything3","John C");
