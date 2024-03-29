@@ -44,7 +44,7 @@ public class User {
     }
 
     public boolean checkUsername(String user){
-        if((user.length() >= 5) && user.length() <= 15){
+        if((user.length() >= 6) && user.length() <= 15){
             return true;
         } else {return false;}
 

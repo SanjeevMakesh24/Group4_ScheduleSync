@@ -15,9 +15,6 @@ public class UserService {
         userRepo.save(user);
     }
 
-    public Iterable<User> getAllUsers(){
-        return this.userRepo.findAll();
-    }
 
     public void deleteUser(String ID){
         userRepo.deleteById(ID);
@@ -27,6 +24,8 @@ public class UserService {
         return userRepo.findById(userID).get();
     }
 
-
+    public Iterable<User> getAllUsers(){
+        return this.userRepo.findAll();
+    }
 
 }
