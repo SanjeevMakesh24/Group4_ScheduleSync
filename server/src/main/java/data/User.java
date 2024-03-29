@@ -35,24 +35,16 @@ public class User {
 
     }
 
-
     public boolean checkPassword(String pswd){
-        if((pswd.length() >= 6) && pswd.length() <= 12){
-            return true;
-        } else {return false;}
-
+        return (pswd.length() >= 6 && pswd.length() <= 12);
     }
 
     public boolean checkUsername(String user){
-        if((user.length() >= 6) && user.length() <= 15){
-            return true;
-        } else {return false;}
-
+        return (user.length() >= 6 && user.length() <= 15);
     }
 
     public boolean checkEmail(String email){
         //change to check list of valid email endings
         return email.contains("@email.com");
     }
-
 }
