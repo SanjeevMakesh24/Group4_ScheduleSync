@@ -35,10 +35,12 @@ public class User {
 
     }
 
+    //checking the password requirements
     public boolean checkPassword(String pswd){
         return (pswd.length() >= 6 && pswd.length() <= 12);
     }
 
+    //checking the username requirements
     public boolean checkUsername(String user){
         return (user.length() >= 6 && user.length() <= 15);
     }
