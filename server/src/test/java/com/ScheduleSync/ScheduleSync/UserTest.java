@@ -2,52 +2,91 @@ package com.ScheduleSync.ScheduleSync;
 
 
 import data.User;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
     //userID,password,email,username,name
 
-    User testCase1;
-    User testCase2 = new User("user2","xyz","testemail@email.com","anything2","John B");
-    User testCase3 = new User("user3","","testemail@email.com","anything3","John C");
-    User testCase4 = new User("user4","Passw0rd!","testemail@fake.com","anything4","John D");
-    User testCase5 = new User("user5","Passw0rd!","","anything5","John E");
-
-    //private User testCase6;
-
-    @BeforeEach
-    void setUp() {
-        // Initialize your test case here
-        testCase1 = new User("user1","Passw0rd!","testemail@email.com","anything1","John A");
-    }
-
+    //user account creation is successful
     @Test
-    void testUserID() {
-        assertEquals("user1", testCase1.getUserID(), "User ID should match");
+    void testSuccessfulAccountCreation() {
+        User user = new User("user1", "Password12#", "testuser@email.com", "myUsername", "John Doe");
+        assertNotNull(user.getPassword());
+        assertNotNull(user.getUsername());
+        assertNotNull(user.getEmail());
     }
 
+    //invalid: password too short
     @Test
-    void testPassword() {
-        assertEquals("Passw0rd!", testCase1.getPassword(), "Password should match");
+    void passwordInvalidTooShort() {
+        User user = new User("user2", "123", "user2@email.com", "username2", "User Two");
+        assertNull(user.getPassword(), "Password should be null due to invalid length");
     }
 
+    //invalid: password too long
     @Test
-    void testEmail() {
-        assertEquals("testemail@email.com", testCase1.getEmail(), "Email should match");
+    void passwordInvalidTooLong() {
+        User user = new User("user2", "1234567890123", "user2@email.com", "username2", "User Two");
+        assertNull(user.getPassword(), "Password should be null due to invalid length");
     }
 
+    //invalid: password has no numbers or special characters
     @Test
-    void testUsername() {
-        assertEquals("anything1", testCase1.getUsername(), "Username should match");
+    void passwordInValidNoNumberAndSpecialChar() {
+        User user = new User("user12", "Password", "user12@email.com", "username12", "User Twelve");
+        assertNull(user.getPassword(), "Password should be invalid with at least one number and one special character");
     }
 
+    //invalid: password exception
     @Test
-    void testName() {
-        assertEquals("John A", testCase1.getName(), "Name should match");
+    void testPasswordExceptionEmptyInput() {
+        User user = new User("user3", "", "user3@email.com", "username3", "User Three");
+        assertNull(user.getPassword(), "Password should be null due to being empty");
     }
 
+
+    //invalid: email is invalid
+    @Test
+    void emailInvalid() {
+        User user = new User("user4", "Password", "user4@temailscom", "username4", "User Four");
+        assertNull(user.getEmail(), "Email should be null due to invalid format");
+    }
+
+    //exception: email empty input
+    @Test
+    void emailExceptionEmptyInput() {
+        User user = new User("user5", "Password", "", "username5", "User Five");
+        assertNull(user.getEmail(), "Email should be null due to being empty");
+    }
+
+    //invalid: username too short
+    @Test
+    void usernameInvalidTooShort() {
+        User user = new User("user6", "Password", "user6@email.com", "usr", "User Six");
+        assertNull(user.getUsername(), "Username should be null due to invalid length");
+    }
+
+    //invalid: username too long
+    @Test
+    void usernameInvalidTooLong() {
+        User user = new User("user6", "Password", "user6@email.com", "usernameIsWayTooLongForThisTest", "User Six");
+        assertNull(user.getUsername(), "Username should be null due to invalid length");
+    }
+
+    //exception: username empty input
+    @Test
+    void usernameExceptionEmptyInput() {
+        User user = new User("user7", "Password", "user7@email.com", "", "User Seven");
+        assertNull(user.getUsername(), "Username should be null due to being empty");
+    }
+
+    //invalid: username starts with a number
+    @Test
+    void testUsernameInvalidFirstCharNumber() {
+        User user = new User("user8", "Password", "user8@email.com", "1username", "User Eight");
+        assertNull(user.getUsername(), "Username should be null because the first character is a number");
+    }
 
 }

@@ -36,14 +36,27 @@ public class User {
     }
 
     //checking the password requirements
-    public boolean checkPassword(String pswd){
-        return (pswd.length() >= 6 && pswd.length() <= 12);
+    public boolean checkPassword(String pswd) {
+        //regex to check for at least one number.
+        boolean hasNumber = pswd.matches(".*[0-9].*");
+        //regex to check for at least one special character.
+        boolean hasSpecial = pswd.matches(".*[^a-zA-Z0-9].*");
+
+        return hasNumber && hasSpecial && (pswd.length() >= 6 && pswd.length() <= 12);
     }
+
 
     //checking the username requirements
     public boolean checkUsername(String user){
-        return (user.length() >= 6 && user.length() <= 15);
+        if (user == null || user.isEmpty()) {
+            return false;
+        }
+        char firstChar = user.charAt(0);
+        boolean isFirstCharValid = Character.isLetter(firstChar);
+
+        return isFirstCharValid && (user.length() >= 5 && user.length() <= 15);
     }
+
 
     public boolean checkEmail(String email){
         //change to check list of valid email endings

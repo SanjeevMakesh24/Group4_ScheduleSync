@@ -2,6 +2,7 @@ package service;
 
 import data.Schedule;
 import data.ScheduleRepository;
+import data.TimeBlock;
 import data.TimeBlockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,11 @@ import java.util.Optional;
 @Service
 public class ScheduleService {
 
+    @Autowired
     private ScheduleRepository scheduleRepository;
+
+    @Autowired
+    private TimeBlockRepository timeBlockRepository;
 
     public void save(Schedule schedule){
         scheduleRepository.save(schedule);
@@ -19,12 +24,17 @@ public class ScheduleService {
     // Add a TimeBlock to a specific schedule by TimeBlock ID
     public void addTimeBlock(String scheduleId, String timeBlockId) {
         Optional<Schedule> scheduleOptional = scheduleRepository.findById(scheduleId);
-        if (scheduleOptional.isPresent()) {
+        Optional<TimeBlock> timeBlockOptional = timeBlockRepository.findById(timeBlockId);
+
+        if (scheduleOptional.isPresent() && timeBlockOptional.isPresent()) {
             Schedule schedule = scheduleOptional.get();
-            schedule.addTimeBlock(timeBlockId);
+            TimeBlock timeBlock = timeBlockOptional.get();
+            schedule.addTimeBlock(timeBlock);
             scheduleRepository.save(schedule);
-        } else {
+        } else if (!scheduleOptional.isPresent()) {
             throw new RuntimeException("Schedule not found");
+        } else {
+            throw new RuntimeException("TimeBlock not found");
         }
     }
 
@@ -42,12 +52,11 @@ public class ScheduleService {
 
     // Retrieve a specific schedule by ID
     public Schedule getSchedule(String scheduleId) {
-        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(() -> new RuntimeException("Schedule not found"));
-        return schedule;
+        return scheduleRepository.findById(scheduleId).orElseThrow(() -> new RuntimeException("Schedule not found"));
     }
 
+    // Delete a specific schedule by ID
     public void deleteSchedule(String id){
         scheduleRepository.deleteById(id);
     }
-
 }

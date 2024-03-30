@@ -1,51 +1,42 @@
 package data;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-@Getter
 @Document(collection = "schedule")
+@Getter
 public class Schedule {
-    @Setter
+
     @Id
-    private String id; // Adding a schedule ID
-    private List<String> timeBlockNames; // Changed from timeBlock to String for IDs
+    private String id;
+    private List<TimeBlock> timeBlocks;
 
     public Schedule() {
-        this.timeBlockNames = new ArrayList<>();
+        this.timeBlocks = new ArrayList<>();
     }
 
-    // Constructor that accepts a variable number of TimeBlock ID arguments
-    public Schedule(String... timeBlockIds) {
-        this.timeBlockNames = new ArrayList<>(Arrays.asList(timeBlockIds));
+    // Add a TimeBlock object to the schedule, with conflict checking
+    public void addTimeBlock(TimeBlock newTimeBlock) {
+        for (TimeBlock existingBlock : timeBlocks) {
+            if (isConflict(newTimeBlock, existingBlock)) {
+                //If there's a conflict, you might log it, handle it accordingly, or throw an exception
+                return; // Indicates a conflict was detected
+            }
+        }
+        timeBlocks.add(newTimeBlock);
     }
 
-    // Add a TimeBlock ID to the schedule
-    public void addTimeBlock(String timeBlockId) {
-        //might want to add conflict checking here
-//        TimeBlock newTimeBlock = TimeBlockRepository.findById(timeBlockId)
-//                .orElseThrow(() -> new IllegalArgumentException("TimeBlock not found"));
-//
-//        for (String existingId : timeBlockNames) {
-//            TimeBlock existingTimeBlock = TimeBlockRepository.findById(existingId)
-//                    .orElseThrow(() -> new IllegalArgumentException("TimeBlock not found"));
-//
-//            if (newTimeBlock.getBlockDay().equals(existingTimeBlock.getBlockDay()) &&
-//                    !newTimeBlock.getEndTime().isBefore(existingTimeBlock.getStartTime()) &&
-//                    !newTimeBlock.getStartTime().isAfter(existingTimeBlock.getEndTime())) {
-//                throw new ConflictException("TimeBlock conflict detected");
-//            }
-//        }
-
-        timeBlockNames.add(timeBlockId);
+    public void removeTimeBlock(String timeBlockId) {
+        timeBlocks.removeIf(block -> block.getBlockName().equals(timeBlockId));
     }
 
-    public void removeTimeBlock(String timeBlockId){
-        timeBlockNames.remove(timeBlockId);
+    // Simple conflict check (example based on overlapping times in the same day)
+    private boolean isConflict(TimeBlock newBlock, TimeBlock existingBlock) {
+        return newBlock.getBlockDay() == existingBlock.getBlockDay() &&
+                !newBlock.getEndTime().isBefore(existingBlock.getStartTime()) &&
+                !newBlock.getStartTime().isAfter(existingBlock.getEndTime());
     }
 }

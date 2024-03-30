@@ -21,5 +21,4 @@ public class TimeBlock {
     private LocalTime startTime;
     private LocalTime endTime;
     private DayOfWeek blockDay;
-
 }
