@@ -12,7 +12,7 @@ public class UserTest {
     //user account creation is successful
     @Test
     void testSuccessfulAccountCreation() {
-        User user = new User("user1", "Password12#", "testuser@email.com", "myUsername", "John Doe");
+        User user = new User("user1", "Password12#", "testuser@email.com", "myUsername", "User One");
         assertNotNull(user.getPassword());
         assertNotNull(user.getUsername());
         assertNotNull(user.getEmail());

@@ -3,20 +3,17 @@ package controller;
 import data.User;
 import service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/create-account")
-
+@CrossOrigin(origins = "*")
+@RequestMapping("api/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping(value="/save")
+    @PostMapping(value="/addUser")
     private String saveUser(@RequestBody User user){
         userService.save(user);
         return user.getUserID();

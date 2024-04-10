@@ -1,12 +1,19 @@
 package data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 import lombok.Builder;
 
-@Document(collection = "users")
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Document(collection = "user")
 @Data
-@Builder
+//@Builder
 public class User {
 
     @Id
@@ -16,6 +23,17 @@ public class User {
     private String password;
     private String username;
     private String name;
+
+    @Setter
+    @Getter
+    private List<User> friends; // List of friends
+    @Getter
+    @Setter
+    private Schedule schedule; // User's personal schedule
+    @Setter
+    @Getter
+    private Set<Group> groups; // Groups the user is part of
+
 
     public User (String userID, String password, String email, String username, String name){
         this.userID = userID;
@@ -33,6 +51,9 @@ public class User {
             this.email = email;
         } else {this.email= null;}
 
+        this.friends = new ArrayList<>();
+        this.schedule = new Schedule();
+        this.groups = new HashSet<>();
     }
 
     //checking the password requirements
@@ -62,4 +83,21 @@ public class User {
         //change to check list of valid email endings
         return email.contains("@email.com");
     }
+
+    public void addFriend(User friend) {
+        this.friends.add(friend);
+    }
+
+    public void removeFriend(User friend) {
+        this.friends.remove(friend);
+    }
+
+    public void addGroup(Group group) {
+        this.groups.add(group);
+    }
+
+    public void removeGroup(Group group) {
+        this.groups.remove(group);
+    }
+
 }
