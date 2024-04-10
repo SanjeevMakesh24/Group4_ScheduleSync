@@ -33,7 +33,7 @@ public class GroupTest {
         // Add overlapping time block to user2's schedule
         user2.getSchedule().addTimeBlock(overlappingTb);
 
-        // Initialize group
+        //Initialize group
         group = new Group("Test Group");
     }
 
