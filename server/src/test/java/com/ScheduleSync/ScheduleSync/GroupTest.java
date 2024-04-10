@@ -60,7 +60,7 @@ public class GroupTest {
     void testHandlingOverlappingTimeBlocks() {
         group.addMember(user1);
         group.addMember(user2);
-        // Assuming your merging logic adjusts the end time of the overlapping block
+
         assertTrue(group.getGroupSchedule().getTimeBlocks().stream()
                         .anyMatch(tb -> tb.getEndTime().equals(LocalTime.of(11, 15))),
                 "Group schedule should adjust to include overlapping time block.");
