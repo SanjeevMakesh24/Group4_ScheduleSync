@@ -1,0 +1,1 @@
+Client folder is where all the front end stuff will be
