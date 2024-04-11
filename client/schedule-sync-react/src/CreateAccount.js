@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 //import { Button } from "./Button";
 //import { HaveAnAccount } from "./HaveAnAccount";
 //import { LinkText } from "./LinkText";
@@ -6,8 +7,12 @@ import React from "react";
 import "./App.css";
 
 export const CreateAccount = () => {
+
+  
   return (
-    <div className="create-account">
+    
+    <div 
+    className="create-account">
       <div className="overlap-wrapper">
         <div className="overlap">
           <div className="image">

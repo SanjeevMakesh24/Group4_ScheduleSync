@@ -1,6 +1,4 @@
-// Filename - App.js
- 
-import React from "react";
+ import React from "react";
 import CreateAccount from './CreateAccount';
 import "./App.css";
  
