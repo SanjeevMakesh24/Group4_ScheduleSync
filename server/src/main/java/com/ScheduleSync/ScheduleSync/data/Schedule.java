@@ -1,4 +1,4 @@
-package data;
+package com.ScheduleSync.ScheduleSync.data;
 
 import lombok.Getter;
 import org.springframework.data.annotation.Id;

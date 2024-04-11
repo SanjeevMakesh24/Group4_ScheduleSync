@@ -1,7 +1,7 @@
 package com.ScheduleSync.ScheduleSync;
 
 
-import data.User;
+import com.ScheduleSync.ScheduleSync.data.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

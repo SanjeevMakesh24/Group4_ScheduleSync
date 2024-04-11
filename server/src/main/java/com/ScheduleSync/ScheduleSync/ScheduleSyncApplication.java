@@ -22,7 +22,7 @@ public class ScheduleSyncApplication {
 		SpringApplication.run(ScheduleSyncApplication.class, args);
 	}
 
-	@GetMapping("/")
+	@GetMapping(value = "/")
 	public String apiRoute() {
 		return "Hello from ScheduleSync";
 	}
@@ -39,5 +39,6 @@ public class ScheduleSyncApplication {
 						.allowCredentials(false).maxAge(3600);
 			}
 		};
+
 	}
 }

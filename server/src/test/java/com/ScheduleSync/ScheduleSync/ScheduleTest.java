@@ -1,7 +1,7 @@
 package com.ScheduleSync.ScheduleSync;
 
-import data.Schedule;
-import data.TimeBlock;
+import com.ScheduleSync.ScheduleSync.data.Schedule;
+import com.ScheduleSync.ScheduleSync.data.TimeBlock;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;

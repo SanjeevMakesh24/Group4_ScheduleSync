@@ -1,7 +1,7 @@
 package com.ScheduleSync.ScheduleSync;
-import data.Group;
-import data.TimeBlock;
-import data.User;
+import com.ScheduleSync.ScheduleSync.data.Group;
+import com.ScheduleSync.ScheduleSync.data.TimeBlock;
+import com.ScheduleSync.ScheduleSync.data.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

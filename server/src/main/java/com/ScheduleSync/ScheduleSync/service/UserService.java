@@ -1,7 +1,8 @@
-package service;
+package com.ScheduleSync.ScheduleSync.service;
 
-import data.User;
-import data.UserRepository;
+import com.ScheduleSync.ScheduleSync.data.Schedule;
+import com.ScheduleSync.ScheduleSync.data.User;
+import com.ScheduleSync.ScheduleSync.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,12 @@ public class UserService {
     public Iterable<User> getAllUsers(){
         return this.userRepo.findAll();
     }
+
+    public void addScheduleToUser(String userId, Schedule schedule) {
+        User user = userRepo.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+        user.setSchedule(schedule);
+        userRepo.save(user);
+    }
+
 
 }

@@ -1,7 +1,7 @@
-package service;
+package com.ScheduleSync.ScheduleSync.service;
 
-import data.TimeBlock;
-import data.TimeBlockRepository;
+import com.ScheduleSync.ScheduleSync.data.TimeBlock;
+import com.ScheduleSync.ScheduleSync.data.TimeBlockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
