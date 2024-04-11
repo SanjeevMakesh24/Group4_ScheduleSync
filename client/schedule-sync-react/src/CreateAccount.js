@@ -27,7 +27,7 @@ export const CreateAccount = () => {
             <div className="content">
               <div className="div">
                 <div className="text-wrapper-7">Create an account</div>
-                <div className="text-wrapper-1">Already Have An Account? Log In </div>
+                <div className="text-wrapper-1"> Already Have An Account? <Link to="/log-in">Log In</Link>
                {/*} <HaveAnAccount className="design-component-instance-node" /> */}
               </div>
               <div className="frame-2">
