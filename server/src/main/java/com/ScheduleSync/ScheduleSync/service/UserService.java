@@ -1,6 +1,7 @@
 package com.ScheduleSync.ScheduleSync.service;
 
 import com.ScheduleSync.ScheduleSync.data.Schedule;
+import com.ScheduleSync.ScheduleSync.data.TimeBlock;
 import com.ScheduleSync.ScheduleSync.data.User;
 import com.ScheduleSync.ScheduleSync.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,26 @@ public class UserService {
 
     public void addScheduleToUser(String userId, Schedule schedule) {
         User user = userRepo.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        user.setSchedule(schedule);
+
+        if (user != null) {
+            user.setSchedule(schedule);
+            userRepo.save(user);
+        } else {
+            throw new RuntimeException("Cannot update schedule. User with id " + userId + " does not exist.");
+        }
+    }
+    public void addTimeBlockToUserSchedule(String userId, TimeBlock timeBlock) {
+        User user = userRepo.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+        Schedule userSchedule = user.getSchedule();
+        userSchedule.addTimeBlock(timeBlock);
         userRepo.save(user);
     }
+
+    public Schedule getUserSchedule(String userId) {
+        User user = userRepo.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+        return user.getSchedule();
+    }
+
 
 
 }

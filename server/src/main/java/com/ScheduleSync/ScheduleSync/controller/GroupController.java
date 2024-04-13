@@ -1,0 +1,87 @@
+package com.ScheduleSync.ScheduleSync.controller;
+
+import com.ScheduleSync.ScheduleSync.data.Event;
+import com.ScheduleSync.ScheduleSync.data.Group;
+import com.ScheduleSync.ScheduleSync.data.Schedule;
+import com.ScheduleSync.ScheduleSync.data.TimeBlock;
+import com.ScheduleSync.ScheduleSync.service.EventService;
+import com.ScheduleSync.ScheduleSync.service.GroupService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/group")
+public class GroupController {
+
+    @Autowired
+    private GroupService groupService;
+
+    @Autowired
+    private EventService eventService;
+
+    @PostMapping("/create")
+    public Group createGroup(@RequestBody Map<String, String> body) {
+        String name = body.get("name");
+        return groupService.createGroup(name);
+    }
+
+    @PostMapping("/{groupId}/addMember/{userId}")
+    public void addMember(@PathVariable String groupId, @PathVariable String userId) {
+        groupService.addMember(groupId, userId);
+    }
+
+    @DeleteMapping("/{groupId}/removeMember/{userId}")
+    public void removeMember(@PathVariable String groupId, @PathVariable String userId) {
+        groupService.removeMember(groupId, userId);
+    }
+
+    @GetMapping("/{groupId}")
+    public Group getGroup(@PathVariable String groupId) {
+        return groupService.getGroup(groupId);
+    }
+
+    @PostMapping("/{groupId}/addEvent/{eventId}")
+    public void addEventToGroupSchedule(@PathVariable String groupId, @PathVariable String eventId) {
+        Group group = groupService.getGroup(groupId);
+        Event event = eventService.getEventById(eventId);
+        groupService.addEventToGroupSchedule(group, event);
+    }
+
+    @DeleteMapping("/{groupId}/removeEvent/{eventId}")
+    public void removeEventFromGroupSchedule(@PathVariable String groupId, @PathVariable String eventId) {
+        Group group = groupService.getGroup(groupId);
+        Event event = eventService.getEventById(eventId);
+        //groupService.removeEventFromGroupSchedule(group, event);
+        group.removeEvent(event);
+        removeTimeBlockFromGroupSchedule(groupId, event.getTimeBlock().getBlockName());
+    }
+
+    @DeleteMapping("/{groupId}/removeTimeBlock/{blockName}")
+    public void removeTimeBlockFromGroupSchedule(@PathVariable String groupId, @PathVariable String blockName) {
+        Group group = groupService.getGroup(groupId);
+        Schedule schedule = group.getSchedule();
+        TimeBlock timeBlockToRemove = null;
+        for (TimeBlock timeBlock : schedule.getTimeBlocks()) {
+            if (blockName.equals(timeBlock.getBlockName())) {
+                timeBlockToRemove = timeBlock;
+                break;
+            }
+        }
+        if (timeBlockToRemove != null) {
+            group.removeTimeBlockFromSchedule(timeBlockToRemove);
+            groupService.saveGroup(group);
+        }
+    }
+
+    @DeleteMapping("/{groupId}")
+    public void deleteGroup(@PathVariable String groupId) {
+        groupService.deleteGroup(groupId);
+    }
+
+    @GetMapping("/{groupId}/schedule")
+    public Schedule getGroupSchedule(@PathVariable String groupId) {
+        return groupService.getGroupSchedule(groupId);
+    }
+}

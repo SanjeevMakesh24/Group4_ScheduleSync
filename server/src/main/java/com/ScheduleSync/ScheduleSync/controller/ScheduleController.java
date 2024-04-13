@@ -1,6 +1,7 @@
 package com.ScheduleSync.ScheduleSync.controller;
 
 import com.ScheduleSync.ScheduleSync.data.Schedule;
+import com.ScheduleSync.ScheduleSync.data.TimeBlock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.ScheduleSync.ScheduleSync.service.ScheduleService;
@@ -25,6 +26,11 @@ public class ScheduleController {
     @RequestMapping("/delete/{id}")
     public void deleteSchedule(@PathVariable(name="id") String scheduleID){
         scheduleService.deleteSchedule(scheduleID);
+    }
+
+    @PostMapping("/{scheduleId}/addTimeBlock")
+    public void addTimeBlockToSchedule(@PathVariable String scheduleId, @RequestBody String timeBlock) {
+        scheduleService.addTimeBlock(scheduleId, timeBlock);
     }
 
 }

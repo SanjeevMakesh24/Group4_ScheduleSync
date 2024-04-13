@@ -31,7 +31,7 @@ public class ScheduleService {
             TimeBlock timeBlock = timeBlockOptional.get();
             schedule.addTimeBlock(timeBlock);
             scheduleRepository.save(schedule);
-        } else if (!scheduleOptional.isPresent()) {
+        } else if (scheduleOptional.isEmpty()) {
             throw new RuntimeException("Schedule not found");
         } else {
             throw new RuntimeException("TimeBlock not found");

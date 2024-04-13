@@ -1,6 +1,7 @@
 package com.ScheduleSync.ScheduleSync.controller;
 
 import com.ScheduleSync.ScheduleSync.data.Schedule;
+import com.ScheduleSync.ScheduleSync.data.TimeBlock;
 import com.ScheduleSync.ScheduleSync.data.User;
 import com.ScheduleSync.ScheduleSync.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class UserController {
         userService.addScheduleToUser(userId, schedule);
     }
 
+    @PostMapping("/{userId}/schedule/addTimeBlock")
+    public void addTimeBlockToUserSchedule(@PathVariable String userId, @RequestBody TimeBlock timeBlock) {
+        userService.addTimeBlockToUserSchedule(userId, timeBlock);
+    }
+
     @GetMapping(value="/getAll")
     public Iterable<User> getUsers(){
         return userService.getAllUsers();
@@ -38,6 +44,11 @@ public class UserController {
     @RequestMapping("/search/{userID}")
     private User getUser(@PathVariable(name="userID") String userID){
         return userService.getUserByID(userID);
+    }
+
+    @GetMapping("/{userId}/schedule")
+    public Schedule getUserSchedule(@PathVariable String userId) {
+        return userService.getUserSchedule(userId);
     }
 
 

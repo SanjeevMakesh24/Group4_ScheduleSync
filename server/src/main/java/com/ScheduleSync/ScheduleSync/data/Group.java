@@ -1,17 +1,27 @@
 package com.ScheduleSync.ScheduleSync.data;
 
+import lombok.Getter;
+import org.springframework.data.annotation.Id;
+
 import java.time.LocalTime;
 import java.util.*;
 
 public class Group {
+
+    @Id
     private String name;
+    @Getter
     private Set<User> members;
+    // Getter method for the group's combined schedule
+    @Getter
     private Schedule groupSchedule;
+    private List<Event> events;
 
     public Group(String name) {
         this.name = name;
         this.members = new HashSet<>();
         this.groupSchedule = new Schedule();
+        this.events = new ArrayList<>();
     }
 
     // Add a member to the group and their schedule to the group schedule
@@ -65,14 +75,24 @@ public class Group {
                 !(block1.getEndTime().isBefore(block2.getStartTime()) || block1.getStartTime().isAfter(block2.getEndTime()));
     }
 
-    public Set<User> getMembers() {
-        return this.members;
+    public void addEvent(Event event) {
+        this.events.add(event);
     }
 
-    // Getter method for the group's combined schedule
-    public Schedule getGroupSchedule() {
-        return this.groupSchedule;
+    public void removeEvent(Event event) {
+        this.events.remove(event);
+    }
+
+    public void addEventToSchedule(Event event) {
+        this.groupSchedule.addTimeBlock(event.getTimeBlock());
     }
 
 
+    public Schedule getSchedule() {
+        return groupSchedule;
+    }
+
+    public void removeTimeBlockFromSchedule(TimeBlock timeBlock) {
+        this.groupSchedule.removeTimeBlock(timeBlock.getBlockName());
+    }
 }

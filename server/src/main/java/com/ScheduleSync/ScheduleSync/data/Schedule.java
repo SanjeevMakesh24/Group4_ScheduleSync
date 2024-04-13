@@ -19,18 +19,25 @@ public class Schedule {
     }
 
     // Add a TimeBlock object to the schedule, with conflict checking
-    public void addTimeBlock(TimeBlock newTimeBlock) {
+    public TimeBlock addTimeBlock(TimeBlock newTimeBlock) {
+        if (timeBlocks.isEmpty()) {
+            timeBlocks.add(newTimeBlock);
+            return newTimeBlock;
+        }
+
         for (TimeBlock existingBlock : timeBlocks) {
             if (isConflict(newTimeBlock, existingBlock)) {
-                //If there's a conflict, you might log it, handle it accordingly, or throw an exception
-                return; // Indicates a conflict was detected
+                // If there's a conflict, return the existing block
+                return existingBlock;
             }
         }
+
         timeBlocks.add(newTimeBlock);
+        return newTimeBlock; // Return the newly added block if there's no conflict
     }
 
     public void removeTimeBlock(String timeBlockId) {
-        timeBlocks.removeIf(block -> block.getBlockName().equals(timeBlockId));
+        timeBlocks.removeIf(block -> block.getBlockName() != null && block.getBlockName().equals(timeBlockId));
     }
 
     // Simple conflict check (example based on overlapping times in the same day)
