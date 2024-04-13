@@ -66,7 +66,7 @@ public class Group {
                 mergedBlock.getStartTime() : existingBlock.getStartTime();
         LocalTime newEnd = mergedBlock.getEndTime().isAfter(existingBlock.getEndTime()) ?
                 mergedBlock.getEndTime() : existingBlock.getEndTime();
-        return new TimeBlock(mergedBlock.getBlockName(), newStart, newEnd, mergedBlock.getBlockDay());
+        return new TimeBlock(mergedBlock.getBlockName() + " " + existingBlock.getBlockName(), newStart, newEnd, mergedBlock.getBlockDay());
     }
 
     // Checks if two time blocks overlap
