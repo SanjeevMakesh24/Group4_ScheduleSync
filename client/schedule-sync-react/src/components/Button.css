@@ -1,0 +1,46 @@
+.icons1 {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: none;
+}
+.sign-up1 {
+  width: 171px;
+  position: relative;
+  font-size: var(--font-size-3xl);
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  color: var(--colors-white-100);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button1,
+.icons-group {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.icons-group {
+  justify-content: flex-start;
+  gap: var(--gap-5xs);
+}
+.button1 {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-mini) var(--padding-xl) var(--padding-base);
+  background-color: var(--color-dimgray-200);
+  align-self: stretch;
+  border-radius: var(--br-21xl);
+  overflow: hidden;
+  justify-content: center;
+  opacity: 0.25;
+}
+@media screen and (max-width: 450px) {
+  .sign-up1 {
+    font-size: var(--font-size-lg);
+  }
+}
