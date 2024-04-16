@@ -5,8 +5,9 @@ import ForgotPassword from './pages/ForgotPassword'
 import CreateAccount from './pages/CreateAccount'
 import UserDashboard from './pages/UserDashboard'
 import GroupSchedule from './pages/GroupSchedule'
+import Sidebar from './components/Sidebar';
 
-export default function App() {
+function App() {
   
   return (
     <div>
@@ -22,3 +23,5 @@ export default function App() {
     </div>
   )
 }
+
+export default App;
