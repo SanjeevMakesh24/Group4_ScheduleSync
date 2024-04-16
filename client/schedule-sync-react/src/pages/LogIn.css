@@ -157,6 +157,8 @@
   }
   .sign-up {
     font-size: var(--font-size-lg);
+  
+    text-decoration: none;
   }
   .log-in2 {
     padding: var(--padding-xl) var(--padding-xl) var(--padding-60xl);

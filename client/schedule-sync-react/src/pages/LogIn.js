@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import FrameComponent1 from "../components/FrameComponent1";
 import "./LogIn.css";
 
@@ -16,10 +17,12 @@ const LogIn = () => {
             <h3 className="dont-have-an">Don’t have an account?</h3>
           </div>
           <div className="button">
+            <a href="/CreateAccount" style={{textDecoration: 'none'}}>
             <button className="icons-parent">
               <img className="icons" alt="" />
               <div className="sign-up">Sign up</div>
             </button>
+            </a>
           </div>
         </div>
       </main>

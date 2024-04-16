@@ -300,6 +300,8 @@
   color: var(--color-gray-100);
   text-align: right;
   display: inline-block;
+  cursor: pointer;
+
 }
 .forget-your-password-wrapper {
   align-self: stretch;
@@ -393,7 +395,9 @@
   flex-direction: row;
   justify-content: center;
   padding: var(--padding-mini) var(--padding-xl) var(--padding-base);
-  opacity: 0.25;
+  opacity: 1.0;
+  cursor: pointer;
+
 }
 .frame-form {
   margin: 0;

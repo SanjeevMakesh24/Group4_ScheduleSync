@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./FrameComponent1.css";
+import "../pages/ForgotPassword";
 
 const FrameComponent1 = () => {
   const [checkBoxIconChecked, setCheckBoxIconChecked] = useState(true);
@@ -65,7 +66,7 @@ const FrameComponent1 = () => {
         </div>
         <div className="frame-parent10">
           <div className="forget-your-password-wrapper">
-            <div className="forget-your-password">Forget your password</div>
+            <a href="../ForgotPassword" className="forget-your-password">Forgot your password</a>
           </div>
           <div className="check-box">
             <input
@@ -81,7 +82,10 @@ const FrameComponent1 = () => {
       <div className="button2">
         <button className="icons-container">
           <img className="icons4" alt="" />
-          <div className="sign-up2">Log in</div>
+         
+          <a href="/UserDashboard" className="sign-up2" style={{textDecoration: 'none'}}> Log in
+
+          </a>
         </button>
       </div>
     </form>
