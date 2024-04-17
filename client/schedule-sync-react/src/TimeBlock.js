@@ -50,6 +50,7 @@ export const TimeBlockForm = () => {
   return (
     <form onSubmit={handleSubmit} className="form time-block-form">
       <div className="input-group">
+      <h1 className="title">ScheduleSync</h1>
         <label className="input-label">
           User ID:
           <input type="text" value={userId} onChange={e => setUserId(e.target.value)} required className="input-field"/>
