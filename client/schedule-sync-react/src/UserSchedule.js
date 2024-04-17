@@ -46,7 +46,6 @@ const UserScheduleCalendar = ({ userId }) => {
       initialView="dayGridWeek"
       events={events}
       eventContent={({ event, el }) => {
-        // render the inner content of the event
         ReactDOM.render(<CustomEvent event={event} />, el);
         return el;
       }}
