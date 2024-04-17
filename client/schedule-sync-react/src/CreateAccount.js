@@ -39,10 +39,7 @@ export const CreateAccount = () => {
         <h3 className="subtitle">Create Account</h3>
         <form onSubmit={handleSubmit} className="account-form">
           <label className="centered-input">
-            User ID:
-            <input  type="text" value={userID} onChange={e => setUserID(e.target.value)} required />
-          </label>
-          <label className="centered-input">
+           
             Name:  
             <input  type="text" value={name} onChange={e => setName(e.target.value)} required />
           </label>
@@ -58,7 +55,8 @@ export const CreateAccount = () => {
             Password:
             <input  type="password" value={password} onChange={e => setPassword(e.target.value)} required />
           </label>
-          <input type="submit" value="Create Account" className="submit-button" />
+          <input type="submit" value="Create Account" className="submit-button" /> 
+          <a href="Login">Already Have an Account</a>
         </form>
       </div>
     </div>

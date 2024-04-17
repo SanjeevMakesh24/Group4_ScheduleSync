@@ -20,7 +20,9 @@
 .title {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 15px;
+  font-size: 60px;
+  height: 2cm;
+  color:#CD7F32;
 }
 
 .subtitle {
