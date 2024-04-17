@@ -1,0 +1,67 @@
+/* Overall form styling */
+.time-block-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #f9f9f9;
+  }
+  
+  .input-group, .button-group {
+    margin-bottom: 15px;
+  }
+  
+  .time-block-entry {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+  }
+  
+  .input-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .input-field, .select-field {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 2px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: #5c67f2;
+    margin-right: 10px;
+  }
+  
+  .button:hover {
+    background-color: #4a54e1;
+  }
+  
+  .add-block-button {
+    background-color: #4caf50;
+  }
+  
+  .add-profile-button {
+    background-color: #ff9800;
+  }
+  
+  .submit-button {
+    background-color: #2196f3;
+  }
+  
+  .button:hover {
+    opacity: 0.9;
+  }
+  

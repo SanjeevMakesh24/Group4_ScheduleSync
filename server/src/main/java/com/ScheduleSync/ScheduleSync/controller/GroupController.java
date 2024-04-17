@@ -21,12 +21,24 @@ public class GroupController {
     @Autowired
     private EventService eventService;
 
+    //Group CRUD
     @PostMapping("/create")
     public Group createGroup(@RequestBody Map<String, String> body) {
         String name = body.get("name");
         return groupService.createGroup(name);
     }
 
+    @GetMapping("/{groupId}")
+    public Group getGroup(@PathVariable String groupId) {
+        return groupService.getGroup(groupId);
+    }
+
+    @DeleteMapping("/{groupId}")
+    public void deleteGroup(@PathVariable String groupId) {
+        groupService.deleteGroup(groupId);
+    }
+
+    //Group Member CRUD
     @PostMapping("/{groupId}/addMember/{userId}")
     public void addMember(@PathVariable String groupId, @PathVariable String userId) {
         groupService.addMember(groupId, userId);
@@ -37,10 +49,7 @@ public class GroupController {
         groupService.removeMember(groupId, userId);
     }
 
-    @GetMapping("/{groupId}")
-    public Group getGroup(@PathVariable String groupId) {
-        return groupService.getGroup(groupId);
-    }
+   //group schedule CRUD
 
     @PostMapping("/{groupId}/addEvent/{eventId}")
     public void addEventToGroupSchedule(@PathVariable String groupId, @PathVariable String eventId) {
@@ -73,11 +82,6 @@ public class GroupController {
             group.removeTimeBlockFromSchedule(timeBlockToRemove);
             groupService.saveGroup(group);
         }
-    }
-
-    @DeleteMapping("/{groupId}")
-    public void deleteGroup(@PathVariable String groupId) {
-        groupService.deleteGroup(groupId);
     }
 
     @GetMapping("/{groupId}/schedule")

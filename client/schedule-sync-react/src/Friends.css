@@ -1,0 +1,46 @@
+.friends-manager {
+    width: 80%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .form label {
+    margin-bottom: 10px;
+  }
+  
+  .submit-button, .get-friends-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .friends-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .friends-table th, .friends-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .friends-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .friends-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #007BFF;
+    color: white;
+  }

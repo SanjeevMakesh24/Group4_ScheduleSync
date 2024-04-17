@@ -25,7 +25,7 @@ public class User {
 
     @Setter
     @Getter
-    private List<User> friends; // List of friends
+    private List<String> friends; // List of friends
     @Getter
     @Setter
     private Schedule schedule; // User's personal schedule
@@ -83,11 +83,11 @@ public class User {
         return email.contains("@email.com");
     }
 
-    public void addFriend(User friend) {
+    public void addFriend(String friend) {
         this.friends.add(friend);
     }
 
-    public void removeFriend(User friend) {
+    public void removeFriend(String friend) {
         this.friends.remove(friend);
     }
 
