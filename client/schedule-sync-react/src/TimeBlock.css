@@ -58,9 +58,16 @@
   }
   
   .submit-button {
-    background-color: #2196f3;
+    width: 100%;
+      padding: 10px;
+      background-color: #6F4E37;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
   }
-  
+
   .button:hover {
     opacity: 0.9;
   }
