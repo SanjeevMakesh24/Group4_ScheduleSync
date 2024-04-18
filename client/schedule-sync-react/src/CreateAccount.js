@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import './CreateAccount.css'; //Import the CSS file
+import 'animate.css';
 
 export const CreateAccount = () => {
   const [userID, setUserID] = useState("");
@@ -41,19 +42,19 @@ export const CreateAccount = () => {
           <label className="centered-input">
            
             Name:  
-            <input  type="text" value={name} onChange={e => setName(e.target.value)} required />
+            <input  type="text" placeholder="Name"  value={name} onChange={e => setName(e.target.value)} required />
           </label>
           <label className="centered-input">
             Username:
-            <input  type="text" value={username} onChange={e => setUsername(e.target.value)} required />
+            <input  type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
           </label>
           <label className="centered-input">
             Email:
-            <input  type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+            <input  type="email" placeholder="Email" required value={email} onChange={e => setEmail(e.target.value)} required />
           </label>
           <label className="centered-input">
             Password:
-            <input  type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+            <input  type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
           </label>
           <input type="submit" value="Create Account" className="submit-button" /> 
           <a href="Login">Already Have an Account</a>
