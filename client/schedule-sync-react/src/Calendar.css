@@ -1,0 +1,55 @@
+/* Styling for the calendar container */
+.calendar-container {
+  padding: 10px;
+  max-width: 1000px;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden; /* Ensures no internal scroll bars are visible */
+}
+
+/* FullCalendar overrides */
+.my-calendar .fc {
+  color: #333; /* Text color */
+  font-size: 14px; /* Adjusts the default font size */
+}
+
+.my-calendar .fc-toolbar-title {
+  font-size: 24px; /* Title font size */
+  color: #4a54e1; /* Title color */
+}
+
+.my-calendar .fc-button {
+  background-color: #5c67f2; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.my-calendar .fc-button:hover {
+  background-color: #4a54e1; /* Button hover state */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.my-calendar .fc-event {
+  background-color: #ff9800; /* Event background color */
+  color: white; /* Event text color */
+  border: none;
+  border-radius: 4px;
+}
+
+.my-calendar .fc-day-today {
+  background-color: #e0f7fa; /* Today's date background */
+}
+
+/* Responsive design tweaks */
+@media (max-width: 768px) {
+  .calendar-container {
+    width: 95%;
+    margin: 10px auto;
+  }
+}

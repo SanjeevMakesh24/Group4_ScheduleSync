@@ -5,7 +5,7 @@ import './TimeBlock.css';
 export const TimeBlockForm = () => {
   const [timeBlocks, setTimeBlocks] = useState([{ blockName: "", startTime: "", endTime: "", blockDay: "" }]);
   const [scheduleId, setScheduleId] = useState("");
-  const [userId, setUserId] = useState("");
+  const [username, setUsername] = useState("");
 
   const addTimeBlock = () => {
     setTimeBlocks([...timeBlocks, { blockName: "", startTime: "", endTime: "", blockDay: "" }]);
@@ -29,7 +29,7 @@ export const TimeBlockForm = () => {
   
     setTimeBlocks([{ blockName: "", startTime: "", endTime: "", blockDay: "" }]);
     setScheduleId("");
-    setUserId("");
+    setUsername("");
   };
 
   const addToProfile = () => {
@@ -38,7 +38,7 @@ export const TimeBlockForm = () => {
       timeBlocks: timeBlocks
     };
 
-    axios.post(`http://localhost:8080/api/user/${userId}/addSchedule`, schedule)
+    axios.post(`http://localhost:8080/api/user/${username}/addSchedule`, schedule)
       .then(response => {
         console.log('Schedule added to user profile');
       })
@@ -51,8 +51,8 @@ export const TimeBlockForm = () => {
     <form onSubmit={handleSubmit} className="form time-block-form">
       <div className="input-group">
         <label className="input-label">
-          User ID:
-          <input type="text" value={userId} onChange={e => setUserId(e.target.value)} required className="input-field"/>
+          Username:
+          <input type="text" value={username} onChange={e => setUsername(e.target.value)} required className="input-field"/>
         </label>
       </div>
       {timeBlocks.map((timeBlock, index) => (

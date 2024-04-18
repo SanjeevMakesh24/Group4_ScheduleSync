@@ -1,0 +1,71 @@
+.sign-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  .form-container {
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .subtitle {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .account-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .centered-input {
+    margin-bottom: 10px;
+  }
+  
+  .centered-input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .submit-button {
+    padding: 10px;
+    background-color: #4a54e1;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #3a44c1;
+  }
+  
+  .createAccountLink {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .createAccountLink a {
+    color: #4a54e1;
+  }
+  
+  .createAccountLink a:hover {
+    color: #3a44c1;
+  }

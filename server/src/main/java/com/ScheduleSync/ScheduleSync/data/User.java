@@ -16,11 +16,9 @@ import java.util.Set;
 public class User {
 
     @Id
-    private String userID;
-
+    private String username;
     private String email;
     private String password;
-    private String username;
     private String name;
 
     @Setter
@@ -31,11 +29,10 @@ public class User {
     private Schedule schedule; // User's personal schedule
     @Setter
     @Getter
-    private Set<Group> groups; // Groups the user is part of
+    private Set<String> groups; // Groups the user is part of
 
 
-    public User (String userID, String password, String email, String username, String name){
-        this.userID = userID;
+    public User (String email, String username, String name, String password){
         this.name = name;
 
         if(checkPassword(password)){
@@ -91,7 +88,7 @@ public class User {
         this.friends.remove(friend);
     }
 
-    public void addGroup(Group group) {
+    public void addGroup(String group) {
         this.groups.add(group);
     }
 

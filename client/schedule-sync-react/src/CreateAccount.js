@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
 import './CreateAccount.css'; //Import the CSS file
 
 export const CreateAccount = () => {
-  const [userID, setUserID] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const user = {
-      userID,
       name,
       username,
       email,
@@ -25,7 +25,10 @@ export const CreateAccount = () => {
 
     axios.post('http://localhost:8080/api/user/addUser', user)
       .then(response => {
-        console.log(`User created with ID: ${response.data}`);
+        console.log(`User created with username: ${response.data}`);
+        console.log(response);
+        console.log(response.data);
+        navigate('/signIn');
       })
       .catch(error => {
         console.error('There was an error!', error);
@@ -38,10 +41,6 @@ export const CreateAccount = () => {
         <h1 className="title">ScheduleSync</h1>
         <h3 className="subtitle">Create Account</h3>
         <form onSubmit={handleSubmit} className="account-form">
-          <label className="centered-input">
-            User ID:
-            <input  type="text" value={userID} onChange={e => setUserID(e.target.value)} required />
-          </label>
           <label className="centered-input">
             Name:  
             <input  type="text" value={name} onChange={e => setName(e.target.value)} required />
@@ -60,6 +59,9 @@ export const CreateAccount = () => {
           </label>
           <input type="submit" value="Create Account" className="submit-button" />
         </form>
+        <div className="signInlink">
+        Already have an account? <Link to="/signIn">Sign In</Link>
+      </div>
       </div>
     </div>
   );

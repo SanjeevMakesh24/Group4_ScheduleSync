@@ -8,12 +8,13 @@ import { findDayAndMonth } from './utils';
 import moment from 'moment';
 import './Calendar.css'; // Import the CSS file
 
-const MyCalendar = () => {
-  const { userId } = useParams();  
+const GroupCalendar = () => {
+  const { groupId } = useParams();  
   const [events, setEvents] = useState([]);
+  const [members, setMembers] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/user/${userId}/schedule`)
+    axios.get(`http://localhost:8080/api/group/${groupId}/schedule`)
       .then(response => {
         const timeBlocks = response.data.timeBlocks;
         const events = timeBlocks.map(block => {
@@ -32,25 +33,44 @@ const MyCalendar = () => {
       .catch(error => {
         console.error('There was an error!', error);
       });
-  }, [userId]);
+
+    axios.get(`http://localhost:8080/api/group/${groupId}/members`)
+      .then(response => {
+        setMembers(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+      });
+  }, [groupId]);
 
   return (
     <div className="calendar-container">
-      <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin]}
-        initialView="timeGridWeek"
-        events={events}
-        editable={true}
-        eventStartEditable={true}
-        eventDurationEditable={true}
-        selectable={true}
-        slotMinTime="07:00:00"
-        slotMaxTime="23:00:00"
-        height="auto" // Adjust the calendar height dynamically
-        className="my-calendar"
-      />
+      <div className="calendar">
+        <FullCalendar
+          plugins={[dayGridPlugin, timeGridPlugin]}
+          initialView="timeGridWeek"
+          events={events}
+          editable={true}
+          eventStartEditable={true}
+          eventDurationEditable={true}
+          selectable={true}
+          slotMinTime="07:00:00"
+          slotMaxTime="23:00:00"
+          height="auto" // Adjust the calendar height dynamically
+          className="my-calendar"
+        />
+      </div>
+
+      <div className="members">
+        <h2>Group Members:</h2>
+        {members.map(member => (
+          <p key={member}>{member}</p>
+        ))}
+      </div>
+      
     </div>
+    
   );
 };
 
-export default MyCalendar;
+export default GroupCalendar;

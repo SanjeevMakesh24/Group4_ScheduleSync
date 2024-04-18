@@ -1,0 +1,30 @@
+.user-dashboard {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .sidebar-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .sidebar-button:hover {
+    background-color: #ccc;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+  }

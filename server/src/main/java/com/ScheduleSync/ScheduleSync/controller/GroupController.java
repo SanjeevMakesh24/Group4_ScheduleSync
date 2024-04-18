@@ -7,9 +7,12 @@ import com.ScheduleSync.ScheduleSync.data.TimeBlock;
 import com.ScheduleSync.ScheduleSync.service.EventService;
 import com.ScheduleSync.ScheduleSync.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/group")
@@ -23,9 +26,10 @@ public class GroupController {
 
     //Group CRUD
     @PostMapping("/create")
-    public Group createGroup(@RequestBody Map<String, String> body) {
+    public String createGroup(@RequestBody Map<String, String> body) {
         String name = body.get("name");
-        return groupService.createGroup(name);
+        Group group = groupService.createGroup(name);
+        return group.getName();
     }
 
     @GetMapping("/{groupId}")
@@ -87,5 +91,16 @@ public class GroupController {
     @GetMapping("/{groupId}/schedule")
     public Schedule getGroupSchedule(@PathVariable String groupId) {
         return groupService.getGroupSchedule(groupId);
+    }
+
+    @GetMapping("/{groupId}/members")
+    public Set<String> getGroupMembers(@PathVariable String groupId) {
+        Group group = groupService.getGroup(groupId);
+        if (group != null) {
+            return group.getGroupMemberNames();
+        } else {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Group not found");
+        }
     }
 }

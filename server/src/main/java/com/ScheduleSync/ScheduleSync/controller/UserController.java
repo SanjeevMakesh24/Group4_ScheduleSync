@@ -6,13 +6,11 @@ import com.ScheduleSync.ScheduleSync.data.User;
 import com.ScheduleSync.ScheduleSync.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -25,8 +23,9 @@ public class UserController {
     @PostMapping(value="/addUser")
     private String saveUser(@RequestBody User user){
         userService.save(user);
-        return user.getUserID();
+        return user.getUsername();
     }
+
 
     @PostMapping(value="/{userId}/addSchedule")
     public void addScheduleToUser(@PathVariable String userId, @RequestBody Schedule newSchedule){
@@ -46,6 +45,24 @@ public class UserController {
                     HttpStatus.NOT_FOUND, "User not found");
         }
     }
+
+    @PostMapping(value="/signIn")
+    public ResponseEntity<Map<String, Object>> signIn(@RequestBody Map<String, String> signInData){
+        String username = signInData.get("username");
+        String password = signInData.get("password");
+
+        User user = userService.getUserByID(username);
+        Map<String, Object> response = new HashMap<>();
+        if (user != null && user.getPassword().equals(password)) {
+            // User is logged in
+            response.put("success", true);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            // Invalid username or password
+            response.put("success", false);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+    }
     
 
     @PostMapping("/{userId}/schedule/addTimeBlock")
@@ -58,13 +75,13 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @DeleteMapping("/delete/{userID}")
-    private void deleteUser(@PathVariable("userID") String userID){
+    @DeleteMapping("/delete/{username}")
+    private void deleteUser(@PathVariable("username") String userID){
         userService.deleteUser(userID);
     }
 
-    @RequestMapping("/search/{userID}")
-    private User getUser(@PathVariable(name="userID") String userID){
+    @GetMapping("/search/{username}")
+    private User getUser(@PathVariable(name="username") String userID){
         return userService.getUserByID(userID);
     }
 
@@ -80,8 +97,8 @@ public class UserController {
 
         if (user != null && friend != null) {
             if (!user.getFriends().contains(friendId)) { // Check friendId instead of friend object
-                user.addFriend(friend.getUserID()); // This now only adds the friend's userID
-                friend.addFriend(user.getUserID()); // Add user to friend's list of friends
+                user.addFriend(friend.getUsername()); // This now only adds the friend's userID
+                friend.addFriend(user.getUsername()); // Add user to friend's list of friends
                 userService.save(user);
                 userService.save(friend); // Save friend's updated list of friends
             } else {
@@ -104,13 +121,24 @@ public class UserController {
                 User friend = userService.getUserByID(friendId);
                 if (friend != null) {
                     Map<String, String> friendDetail = new HashMap<>();
-                    friendDetail.put("userId", friend.getUserID());
+                    friendDetail.put("userId", friend.getUsername());
                     friendDetail.put("username", friend.getUsername());
                     friendDetail.put("name", friend.getName());
                     friendsDetails.add(friendDetail);
                 }
             }
             return friendsDetails;
+        } else {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "User not found");
+        }
+    }
+
+    @GetMapping("/{userId}/groups")
+    public Set<String> getUserGroups(@PathVariable String userId) {
+        User user = userService.getUserByID(userId);
+        if (user != null) {
+            return user.getGroups();
         } else {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "User not found");

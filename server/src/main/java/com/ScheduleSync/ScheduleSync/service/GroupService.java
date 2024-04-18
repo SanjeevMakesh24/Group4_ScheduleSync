@@ -21,7 +21,9 @@ public class GroupService {
     public void addMember(String groupId, String userId) {
         Group group = groupRepository.findById(groupId).orElseThrow(() -> new RuntimeException("Group not found"));
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        group.addMember(user);
+        group.addMember(user, user.getUsername()); // pass the username as an additional parameter
+        user.getGroups().add(group.getName()); // add the group name to the user's list of groups
+        userRepository.save(user); // save the updated user
         groupRepository.save(group);
     }
 

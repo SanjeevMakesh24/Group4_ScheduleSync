@@ -1,4 +1,5 @@
 package com.ScheduleSync.ScheduleSync;
+
 import com.ScheduleSync.ScheduleSync.data.Group;
 import com.ScheduleSync.ScheduleSync.data.TimeBlock;
 import com.ScheduleSync.ScheduleSync.data.User;
@@ -9,6 +10,7 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 public class GroupTest {
 
     private User user1, user2;
@@ -18,8 +20,8 @@ public class GroupTest {
     @BeforeEach
     void setUp() {
         // Initialize users
-        user1 = new User("user1", "pass", "user1@email.com", "username1", "User One");
-        user2 = new User("user2", "pass", "user2@email.com", "username2", "User Two");
+        user1 = new User("user1@email.com", "username1", "User One", "pass");
+        user2 = new User("user2@email.com", "username2", "User Two", "pass");
 
         // Initialize time blocks
         TimeBlock tb1 = new TimeBlock("Software Engineering", LocalTime.of(9, 0), LocalTime.of(10, 30),  DayOfWeek.MONDAY);

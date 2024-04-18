@@ -1,0 +1,112 @@
+import React, { useState, useEffect } from "react";
+import {useParams } from 'react-router-dom';
+import axios from 'axios';
+
+export const CreateGroup = () => {
+  const [groupName, setGroupName] = useState("");
+  const [friends, setFriends] = useState([]);
+  const [selectedFriends, setSelectedFriends] = useState([]);
+  const [groupCreated, setGroupCreated] = useState(false);
+
+  const { username } = useParams(); // Retrieve the username from the URL parameter
+
+  useEffect(() => {
+    if (!username) {
+      console.error("Username is not provided.");
+      return;
+    }
+
+    axios.get(`http://localhost:8080/api/user/${username}/friends`)
+      .then(response => {
+        setFriends(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+      });
+  }, [username]);
+
+  const handleFriendSelect = (event) => {
+    const selectedFriend = friends.find(friend => friend.userId === event.target.value);
+    setSelectedFriends([...selectedFriends, selectedFriend]);
+    setFriends(friends.filter(friend => friend.userId !== event.target.value));
+  };
+
+  const handleGroupCreate = (event) => {
+    event.preventDefault();
+  
+    const newGroupName = groupName;
+  
+    const groupData = {
+      name: newGroupName
+    };
+  
+    axios.post(`http://localhost:8080/api/group/create`, groupData)
+      .then(response => {
+        console.log(response.data);
+        setGroupCreated(true);
+  
+        axios.post(`http://localhost:8080/api/group/${newGroupName}/addMember/${username}`)
+          .then(response => {
+            console.log(`Added user to the group`);
+          })
+          .catch(error => {
+            console.error('There was an error!', error);
+          });
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+      });
+  
+    setGroupName("");
+  };
+
+  const handleAddFriends = () => {
+    selectedFriends.forEach(friend => {
+      axios.post(`http://localhost:8080/api/group/${groupName}/addMember/${friend.username}`)
+        .then(response => {
+          console.log(`Added ${friend.name} to the group`);
+        })
+        .catch(error => {
+          console.error('There was an error in adding friends', error);
+        });
+    });
+
+    setSelectedFriends([]);
+  };
+
+  return (
+    <div className="create-group">
+      <form onSubmit={handleGroupCreate}>
+        <label>
+          Group Name:
+          <input type="text" value={groupName} onChange={e => setGroupName(e.target.value)} required />
+        </label>
+        <input type="submit" value="Create Group" />
+      </form>
+      {groupCreated && (
+        <>
+          <label>
+            Select Friends:
+            <select onChange={handleFriendSelect}>
+              <option value="">Select a friend</option>
+              {friends.map(friend => (
+                <option key={friend.username} value={friend.username}>{friend.name}</option>
+              ))}
+            </select>
+          </label>
+          <button onClick={handleAddFriends}>Add Friends</button>
+        </>
+      )}
+      <div>
+        Selected Friends:
+        <ul>
+          {selectedFriends.map(friend => (
+            <li key={friend.userId}>{friend.name}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default CreateGroup;
