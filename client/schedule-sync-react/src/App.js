@@ -16,8 +16,8 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<CreateAccount />} />
-          <Route path="/friends/:username" element={<FriendsManager />} />
+            <Route path="/" element={<CreateAccount />} />
+            <Route path="/friends/:username" element={<FriendsManager />} />
             <Route path="/timeblock" element={<TimeBlockForm />} />
             <Route path="/userSchedule/:userId" element={<UserScheduleCalendar />} />
             <Route path="/signIn" element={<SignIn />} />
