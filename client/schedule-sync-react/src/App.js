@@ -4,6 +4,7 @@ import CreateAccount from './CreateAccount';
 import FriendsManager from "./Friends";
 import TimeBlockForm from "./TimeBlock";
 import UserScheduleCalendar from "./UserSchedule";
+import Login from "./Login";
 import "./App.css";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <div>
         <Routes>
         <Route path="/" element={<CreateAccount />} />
+        <Route path="/Login" element={<Login />} />
           <Route path="/friends" element={<FriendsManager />} />
             <Route path="/timeblock" element={<TimeBlockForm />} />
             <Route path="/schedule/:userId" element={<UserScheduleCalendar />} />

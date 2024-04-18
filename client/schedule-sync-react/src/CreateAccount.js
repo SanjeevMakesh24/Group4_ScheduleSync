@@ -56,7 +56,7 @@ export const CreateAccount = () => {
             Password:
             <input  type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
           </label>
-          <input type="submit" value="Create Account" className="submit-button" /> 
+          <input type="submit" value="Create Account" className="submit-button1" />
           <a href="Login">Already Have an Account</a>
         </form>
       </div>
