@@ -6,13 +6,15 @@ import TimeBlockForm from "./TimeBlock";
 import UserScheduleCalendar from "./UserSchedule";
 import Login from "./Login";
 import "./App.css";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <Router>
       <div>
         <Routes>
-        <Route path="/" element={<CreateAccount />} />
+        <Route path="/CreateAccount" element={<CreateAccount />} />
+        <Route path="/" element={<Home/>} />
         <Route path="/Login" element={<Login />} />
           <Route path="/friends" element={<FriendsManager />} />
             <Route path="/timeblock" element={<TimeBlockForm />} />
