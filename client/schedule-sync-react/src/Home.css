@@ -66,15 +66,23 @@
     color: #fff;
     margin-bottom: 40px;
   }
-  
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
   .cta-btn {
     display: inline-block;
+    width: 100px;
     padding: 15px 30px;
     background-color: #b58863;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
     font-size: 20px;
+    margin: 0 50px;
     transition: background-color 0.3s ease;
   }
   
