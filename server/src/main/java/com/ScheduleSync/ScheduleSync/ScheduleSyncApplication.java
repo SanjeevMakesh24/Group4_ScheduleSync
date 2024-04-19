@@ -18,7 +18,7 @@ public class ScheduleSyncApplication {
 	}
 
 
-	public static void main(String[] args) {
+	public static void main(String[]args) {
 		SpringApplication.run(ScheduleSyncApplication.class, args);
 	}
 

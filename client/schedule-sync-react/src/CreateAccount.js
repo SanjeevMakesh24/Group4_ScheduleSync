@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
 import './CreateAccount.css'; //Import the CSS file
+import 'animate.css';
+import { useNavigate, Link } from 'react-router-dom';
+
 
 export const CreateAccount = () => {
   const [email, setEmail] = useState("");
@@ -10,10 +12,12 @@ export const CreateAccount = () => {
   const [name, setName] = useState("");
   const navigate = useNavigate();
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const user = {
+
       name,
       username,
       email,
@@ -25,7 +29,7 @@ export const CreateAccount = () => {
 
     axios.post('http://localhost:8080/api/user/addUser', user)
       .then(response => {
-        console.log(`User created with username: ${response.data}`);
+        console.log(`User created with ID: ${response.data}`);
         console.log(response);
         console.log(response.data);
         navigate('/signIn');
@@ -36,33 +40,35 @@ export const CreateAccount = () => {
   };
 
   return (
+    
     <div className="create-account">
-      <div className="form-container2">
-        <h1 className="title">ScheduleSync</h1>
-        <h3 className="subtitle">Create Account</h3>
+      <div className="form-container">
+        <div className= "form-container2">
+        <h1 className="title1">ScheduleSync</h1>
+        <h3 className="subtitle1">Create Account</h3>
         <form onSubmit={handleSubmit} className="account-form">
           <label className="centered-input">
+           
             Name:  
-            <input  type="text" value={name} onChange={e => setName(e.target.value)} required />
+            <input  type="text" placeholder="Name"  value={name} onChange={e => setName(e.target.value)} required />
           </label>
           <label className="centered-input">
             Username:
-            <input  type="text" value={username} onChange={e => setUsername(e.target.value)} required />
+            <input  type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
           </label>
           <label className="centered-input">
             Email:
-            <input  type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+            <input  type="email" placeholder="Email" required value={email} onChange={e => setEmail(e.target.value)} required />
           </label>
           <label className="centered-input">
             Password:
-            <input  type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+            <input  type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
           </label>
-          <input type="submit" value="Create Account" className="submit-button" />
+          <input type="submit" value="Create Account" className="submit-button1" />
+          <a href="signIn">Already Have an Account</a>
         </form>
-        <div className="signInlink">
-        Already have an account? <Link to="/signIn">Sign In</Link>
       </div>
-      </div>
+    </div>
     </div>
   );
 };

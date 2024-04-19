@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import './SignIn.css';
+import 'animate.css'
 
 export const SignIn = () => {
   const [username, setUsername] = useState("");
