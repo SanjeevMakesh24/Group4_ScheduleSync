@@ -10,6 +10,7 @@ import CreateGroup from "./CreateGroup";
 import GroupCalendar from "./GroupCalender";
 import UserGroups from "./Groups";
 import "./App.css";
+import Home from "./pages/Home";
 
 function App() {
   return (

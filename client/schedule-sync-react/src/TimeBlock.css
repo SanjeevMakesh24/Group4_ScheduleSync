@@ -1,32 +1,32 @@
 /* Overall form styling */
 .time-block-form {
     max-width: 600px;
-    margin: 20px auto;
+    margin: 10px auto;
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 10px;
-    background: #f9f9f9;
+    font-family: Tahoma;
+
   }
-  
-  .input-group, .button-group {
-    margin-bottom: 15px;
-  }
-  
+
   .time-block-entry {
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 20px;
     background: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
   }
-  
+
   .input-label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 10px;
     color: #333;
+    width: calc(100% - 20px);
   }
-  
+
+  .time-block-entry .input-label .select-field{
+   width: calc(100% + 18px);
+  }
+
   .input-field, .select-field {
     width: 100%;
     padding: 8px;
@@ -34,34 +34,51 @@
     border-radius: 4px;
     margin-top: 2px;
   }
-  
+
+
   .button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     color: white;
-    background-color: #5c67f2;
+    background-color: #000;
     margin-right: 10px;
+    font-family: Tahoma;
   }
-  
+
   .button:hover {
-    background-color: #4a54e1;
+    background-color: #000;
   }
-  
+
   .add-block-button {
-    background-color: #4caf50;
+    background-color: #2c1f16;
+    transition: background-color 0.3s ease;
   }
-  
+
+.button-group {
+  display: flex;
+  padding-top: 10px;
+  width: calc(100% + 10px);
+
+}
+
   .add-profile-button {
-    background-color: #ff9800;
+    background-color: #4e3726;
+    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 5px;
+
   }
-  
-  .submit-button {
-    background-color: #2196f3;
+
+  .submit-button3 {
+      width: 100%;
+      padding: 18px;
+      background-color: #6F4E37;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
   }
-  
-  .button:hover {
-    opacity: 0.9;
-  }
-  
+

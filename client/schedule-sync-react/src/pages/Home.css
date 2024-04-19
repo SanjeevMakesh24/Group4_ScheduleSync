@@ -1,0 +1,123 @@
+/* Home.css */
+.home {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: #8c6239;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #b58863;
+  }
+  
+  /* MainSection Styles */
+  .main-section {
+    background-color: #a5694f;
+    padding: 100px 0;
+    text-align: center;
+  }
+  
+  .main-section .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .main-section h1 {
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 30px;
+  }
+  
+  .main-section p {
+    font-size: 30px;
+    color: #fff;
+    margin-bottom: 40px;
+  }
+  
+  .cta-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #b58863;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-btn:hover {
+    background-color: #8c6239;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: #8c6239;
+    color: #fff;
+    padding: 30px 0;
+  }
+  
+  footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  footer ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  footer ul li {
+    margin-right: 20px;
+  }
+  
+  footer ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  footer ul li a:hover {
+    color: #b58863;
+  }
+  
+  footer p {
+    font-size: 14px;
+    text-align: center;
+  }
+  

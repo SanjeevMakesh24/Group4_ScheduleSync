@@ -50,6 +50,8 @@ export const TimeBlockForm = () => {
   return (
     <form onSubmit={handleSubmit} className="form time-block-form">
       <div className="input-group">
+      <h1 className="title">ScheduleSync</h1>
+      <h3 className="subtitle">Block off Time</h3>
         <label className="input-label">
           Username:
           <input type="text" value={username} onChange={e => setUsername(e.target.value)} required className="input-field"/>
@@ -59,7 +61,7 @@ export const TimeBlockForm = () => {
         <div key={index} className="time-block-entry">
           <label className="input-label">
             Block Name:
-            <input type="text" value={timeBlock.blockName} onChange={e => {
+            <input type="text" placeholder="Block Name" value={timeBlock.blockName} onChange={e => {
               const newTimeBlocks = [...timeBlocks];
               newTimeBlocks[index].blockName = e.target.value;
               setTimeBlocks(newTimeBlocks);
@@ -81,7 +83,7 @@ export const TimeBlockForm = () => {
               setTimeBlocks(newTimeBlocks);
             }} required className="input-field" />
           </label>
-          <label className="input-label">
+          <label className="input-label" >
             Block Day:
             <select value={timeBlock.blockDay} onChange={e => {
               const newTimeBlocks = [...timeBlocks];
@@ -103,13 +105,13 @@ export const TimeBlockForm = () => {
       <div className="input-group">
         <label className="input-label">
           Schedule Name:
-          <input type="text" value={scheduleId} onChange={e => setScheduleId(e.target.value)} required className="input-field"/>
+          <input type="text" placeholder="Schedule Name" value={scheduleId} onChange={e => setScheduleId(e.target.value)} required className="input-field"/>
         </label>
       </div>
       <div className="button-group">
         <button type="button" onClick={addTimeBlock} className="button add-block-button">Add Another Time Block</button>
         <button type="button" onClick={addToProfile} className="button add-profile-button">Add to Profile</button>
-        <input type="submit" value="Submit" className="button submit-button" />
+        <input type="submit" value="Submit" className="button submit-button3" />
       </div>
     </form>
   );
