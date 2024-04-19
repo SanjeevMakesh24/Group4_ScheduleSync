@@ -2,9 +2,12 @@ package com.ScheduleSync.ScheduleSync.controller;
 
 import com.ScheduleSync.ScheduleSync.data.Event;
 import com.ScheduleSync.ScheduleSync.data.Schedule;
+import com.ScheduleSync.ScheduleSync.data.TimeBlock;
 import com.ScheduleSync.ScheduleSync.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Map;
 
@@ -16,8 +19,9 @@ public class EventController {
     private EventService eventService;
 
     @PostMapping("/create")
-    public Event createEvent(@RequestBody Event event) {
-        return eventService.createEvent(event);
+    public TimeBlock createEvent(@RequestBody Event event) {
+        eventService.createEvent(event);
+        return event.getTimeBlock();
     }
 
     @GetMapping("/{eventId}")
@@ -29,5 +33,6 @@ public class EventController {
     public void deleteEvent(@PathVariable String eventId) {
         eventService.deleteEvent(eventId);
     }
+
 
 }

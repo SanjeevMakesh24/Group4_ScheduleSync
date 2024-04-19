@@ -37,7 +37,7 @@ export const CreateAccount = () => {
 
   return (
     <div className="create-account">
-      <div className="form-container">
+      <div className="form-container2">
         <h1 className="title">ScheduleSync</h1>
         <h3 className="subtitle">Create Account</h3>
         <form onSubmit={handleSubmit} className="account-form">

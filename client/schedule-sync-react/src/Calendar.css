@@ -6,7 +6,7 @@
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  background-color: #fff;
+  background-color: hsl(0, 17%, 92%);
   overflow: hidden; /* Ensures no internal scroll bars are visible */
 }
 
@@ -53,3 +53,18 @@
     margin: 10px auto;
   }
 }
+
+.calendar-container {
+  position: relative;
+}
+
+.addTimeBlock {
+  position: absolute;
+  top: 10px;
+  left: 250px;
+  padding: 10px;
+}
+/* 
+body {
+  background-image: linear-gradient(to right, rgb(237, 191, 42), rgb(43, 38, 5));
+} */

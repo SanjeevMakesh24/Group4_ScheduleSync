@@ -34,7 +34,7 @@ export const SignIn = () => {
 
   return (
     <div className="sign-in">
-      <div className="form-container">
+      <div className="form-container1">
         <h1 className="title">ScheduleSync</h1>
         <h3 className="subtitle">Sign In</h3>
         <form onSubmit={handleSubmit} className="account-form">
@@ -49,7 +49,7 @@ export const SignIn = () => {
           <input type="submit" value="Sign In" className="submit-button" />
         </form>
         <div className="createAccountLink">
-          Don't have an account? <Link to="/">Create Account</Link>
+          Don't have an account? <Link to="/create-account">Create Account</Link>
         </div>
       </div>
     </div>

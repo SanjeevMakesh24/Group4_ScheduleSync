@@ -28,3 +28,7 @@
     flex-grow: 1;
     padding: 20px;
   }
+
+  .sign-out-button{
+    background-color: rgb(245, 196, 196);
+  }

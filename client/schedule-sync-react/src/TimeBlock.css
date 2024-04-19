@@ -1,6 +1,6 @@
 /* Overall form styling */
 .time-block-form {
-    max-width: 600px;
+    width: 350px;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -25,6 +25,7 @@
     margin-bottom: 5px;
     font-weight: bold;
     color: #333;
+    width: 280px;
   }
   
   .input-field, .select-field {

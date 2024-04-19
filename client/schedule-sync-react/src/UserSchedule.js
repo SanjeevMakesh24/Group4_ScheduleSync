@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { findDayAndMonth } from './utils';
 import moment from 'moment';
+import AddEventModal from './AddEventModal';
+import TimeBlockForm from './TimeBlock';
 import './Calendar.css'; // Import the CSS file
 
 const MyCalendar = () => {
-  const { userId } = useParams();  
+  const { username } = useParams();  
   const [events, setEvents] = useState([]);
+  const navigate = useNavigate();
+  const [isModalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/user/${userId}/schedule`)
+    axios.get(`http://localhost:8080/api/user/${username}/schedule`)
       .then(response => {
         const timeBlocks = response.data.timeBlocks;
         const events = timeBlocks.map(block => {
@@ -30,12 +34,20 @@ const MyCalendar = () => {
         setEvents(events);
       })
       .catch(error => {
-        console.error('There was an error!', error);
+        console.error('Cannot get the timeblocks in the user schedule', error);
       });
-  }, [userId]);
+  }, [username]);
+
+  const handleAddTimeBlockClick = () => {
+    navigate(`/timeblock/${username}`);
+  };
 
   return (
     <div className="calendar-container">
+      <button onClick={() => setModalOpen(true)} className='addTimeBlock'>Add Time Block</button>
+      <AddEventModal isOpen={isModalOpen} closeModal={() => setModalOpen(false)} title="Add Time Block">
+        <TimeBlockForm username={username} setEvents={setEvents} />
+      </AddEventModal>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin]}
         initialView="timeGridWeek"
@@ -46,7 +58,7 @@ const MyCalendar = () => {
         selectable={true}
         slotMinTime="07:00:00"
         slotMaxTime="23:00:00"
-        height="auto" // Adjust the calendar height dynamically
+        height="auto" 
         className="my-calendar"
       />
     </div>

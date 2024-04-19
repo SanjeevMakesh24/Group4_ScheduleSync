@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import './TimeBlock.css';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export const TimeBlockForm = () => {
   const [timeBlocks, setTimeBlocks] = useState([{ blockName: "", startTime: "", endTime: "", blockDay: "" }]);
   const [scheduleId, setScheduleId] = useState("");
-  const [username, setUsername] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  //const username = location.state.username;
+  const { username } = useParams();  
 
   const addTimeBlock = () => {
     setTimeBlocks([...timeBlocks, { blockName: "", startTime: "", endTime: "", blockDay: "" }]);
@@ -29,7 +33,6 @@ export const TimeBlockForm = () => {
   
     setTimeBlocks([{ blockName: "", startTime: "", endTime: "", blockDay: "" }]);
     setScheduleId("");
-    setUsername("");
   };
 
   const addToProfile = () => {
@@ -41,6 +44,8 @@ export const TimeBlockForm = () => {
     axios.post(`http://localhost:8080/api/user/${username}/addSchedule`, schedule)
       .then(response => {
         console.log('Schedule added to user profile');
+        navigate(`/userSchedule/${username}`);
+        window.location.reload(); // Refresh the page
       })
       .catch(error => {
         console.error('There was an error!', error);
@@ -49,12 +54,6 @@ export const TimeBlockForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="form time-block-form">
-      <div className="input-group">
-        <label className="input-label">
-          Username:
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} required className="input-field"/>
-        </label>
-      </div>
       {timeBlocks.map((timeBlock, index) => (
         <div key={index} className="time-block-entry">
           <label className="input-label">
@@ -100,16 +99,16 @@ export const TimeBlockForm = () => {
           </label>
         </div>
       ))}
-      <div className="input-group">
+      {/* <div className="input-group">
         <label className="input-label">
           Schedule Name:
           <input type="text" value={scheduleId} onChange={e => setScheduleId(e.target.value)} required className="input-field"/>
         </label>
-      </div>
+      </div> */}
       <div className="button-group">
         <button type="button" onClick={addTimeBlock} className="button add-block-button">Add Another Time Block</button>
         <button type="button" onClick={addToProfile} className="button add-profile-button">Add to Profile</button>
-        <input type="submit" value="Submit" className="button submit-button" />
+        {/* <input type="submit" value="Submit" className="button submit-button" /> */}
       </div>
     </form>
   );

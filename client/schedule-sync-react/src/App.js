@@ -9,6 +9,7 @@ import UserDashboard from "./UserDashboard";
 import CreateGroup from "./CreateGroup";
 import GroupCalendar from "./GroupCalender";
 import UserGroups from "./Groups";
+import Home from "./Home";
 import "./App.css";
 
 function App() {
@@ -16,10 +17,11 @@ function App() {
     <Router>
       <div>
         <Routes>
-            <Route path="/" element={<CreateAccount />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/friends/:username" element={<FriendsManager />} />
-            <Route path="/timeblock" element={<TimeBlockForm />} />
-            <Route path="/userSchedule/:userId" element={<UserScheduleCalendar />} />
+            <Route path="/timeblock/:username" element={<TimeBlockForm />} />
+            <Route path="/userSchedule/:username" element={<UserScheduleCalendar />} />
             <Route path="/signIn" element={<SignIn />} />
             <Route path="/userDashboard" element={<UserDashboard />} />
             <Route path="/createGroup/:username" element={<CreateGroup />} />

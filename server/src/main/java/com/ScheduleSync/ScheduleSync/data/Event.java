@@ -19,7 +19,7 @@ public class Event {
     private int attending;
 
     public Event(String eventName, TimeBlock timeBlock, String description) {
-        this.eventName = "EVENT: " + eventName;
+        this.eventName = eventName;
         this.timeBlock = timeBlock;
         this.description = description;
         this.attending = 0;

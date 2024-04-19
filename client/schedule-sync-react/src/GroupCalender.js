@@ -6,12 +6,16 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { findDayAndMonth } from './utils';
 import moment from 'moment';
-import './Calendar.css'; // Import the CSS file
+import './GroupCalendar.css'; 
+import AddEventForm from './EventForm';
+import AddEventModal from './AddEventModal';
 
 const GroupCalendar = () => {
   const { groupId } = useParams();  
   const [events, setEvents] = useState([]);
   const [members, setMembers] = useState([]);
+  // const [showForm, setShowForm] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     axios.get(`http://localhost:8080/api/group/${groupId}/schedule`)
@@ -43,8 +47,15 @@ const GroupCalendar = () => {
       });
   }, [groupId]);
 
+
   return (
+    <div className="page">
+      {/* <h2 className="group-name"> {groupId}</h2> */}
     <div className="calendar-container">
+      <button className="add-event-button" onClick={() => setModalOpen(true)}>Add Event</button>
+      <AddEventModal isOpen={isModalOpen} closeModal={() => setModalOpen(false)}>
+        <AddEventForm groupId={groupId} setEvents={setEvents} />
+      </AddEventModal>
       <div className="calendar">
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin]}
@@ -56,20 +67,18 @@ const GroupCalendar = () => {
           selectable={true}
           slotMinTime="07:00:00"
           slotMaxTime="23:00:00"
-          height="auto" // Adjust the calendar height dynamically
+          height="auto"
           className="my-calendar"
         />
       </div>
-
       <div className="members">
-        <h2>Group Members:</h2>
+        <h2>Group Members</h2>
         {members.map(member => (
           <p key={member}>{member}</p>
         ))}
       </div>
-      
     </div>
-    
+    </div>
   );
 };
 
