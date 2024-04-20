@@ -1,6 +1,7 @@
 /* Home.css */
 .home {
   font-family: Arial, sans-serif;
+  overflow: hidden;
 }
 
 /* Header Styles */
@@ -8,14 +9,16 @@ header {
   background-color: #8c6239;
   color: #fff;
   padding: 20px 0;
+  height: 0.7cm;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
+  height: 0.5cm;
 }
 
 .logo {
@@ -46,8 +49,9 @@ nav ul li a:hover {
 /* MainSection Styles */
 .main-section {
   background-color: #a5694f;
-  padding: 100px 0;
+  padding: 5px 0;
   text-align: center;
+  height: 17cm;
 }
 
 .main-section .container {
@@ -56,15 +60,15 @@ nav ul li a:hover {
 }
 
 .main-section h1 {
-  font-size: 48px;
+  font-size: 20px;
   color: #fff;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .main-section p {
-  font-size: 30px;
+  font-size:30px;
   color: #fff;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .button-container {
@@ -106,7 +110,7 @@ footer ul {
   list-style-type: none;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 footer ul li {
@@ -127,4 +131,10 @@ footer ul li a:hover {
 footer p {
   font-size: 14px;
   text-align: center;
+  height: 0cm;
+}
+img{
+max-height: 9cm;
+
+
 }
