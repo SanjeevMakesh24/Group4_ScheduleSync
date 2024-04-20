@@ -65,6 +65,7 @@ export const UserDashboard = () => {
         <button onClick={handleSignOutClick} className="sidebar-button sign-out-button">Sign Out</button>
       </div>
       <h1>Welcome, {username}!</h1>
+      {/* <img src="sch_profile.webp" alt="Welcome Image" className="welcome-image" /> */}
       <div className="calendar-container">
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin]}

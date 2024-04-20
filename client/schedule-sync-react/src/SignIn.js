@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import './SignIn.css';
+import 'animate.css';
 
 export const SignIn = () => {
   const [username, setUsername] = useState("");
@@ -40,11 +41,11 @@ export const SignIn = () => {
         <form onSubmit={handleSubmit} className="account-form">
           <label className="centered-input">
             Username:
-            <input type="text" value={username} onChange={e => setUsername(e.target.value)} required />
+            <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
           </label>
           <label className="centered-input">
             Password:
-            <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
           </label>
           <input type="submit" value="Sign In" className="submit-button" />
         </form>

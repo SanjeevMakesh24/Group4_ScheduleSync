@@ -38,11 +38,11 @@ export const FriendsManager = () => {
       <form onSubmit={handleSubmit} className="form">
         <label>
           Friend's Username:
-          <input type="text" value={friendUsername} onChange={e => setFriendUsername(e.target.value)} required />
+          <input type="text" placeholder="John Smith" value={friendUsername} onChange={e => setFriendUsername(e.target.value)} required />
         </label>
-        <input type="submit" value="Add Friend" className="submit-button" />
+        <input type="submit" value="Add Friend" className="submit-button-friends" />
       </form>
-      <button onClick={handleGetFriends} className="get-friends-button">Get Friends</button>
+      <button onClick={handleGetFriends} className="get-friends-button">Find Friends</button>
       {showTable && (
         <table className="friends-table">
           <thead>

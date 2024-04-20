@@ -1,67 +1,96 @@
 .create-account {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f5f5f5;
-    width: 400px;
-  }
-  .account-form {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-    background-color: white;
+  background-image: url(https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BmLXMxMTItcGEtNTZfMS5qcGc.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Tahoma;
   }
 
-  .form-container2 {
+
+.form-container {
+  background-image: url(https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BmLXMxMTItcGEtNTZfMS5qcGc.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  position: relative;
+
+}
+.form-container2 {
+ 
   display: flex; /* Set display to flex to use flexbox properties */
   flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Align children horizontally in the center */
   justify-content: center; /* Center children vertically in the container */
-  width: 350px;
-  height: 620px;
+  width: 500px;
+  height: 600px;
   padding: 20px;
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
- /* Allows scrolling if content exceeds container size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);}
+
+.title1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 40px;
+  height: 10cm;
+  color:#CD7F32;
+  animation: heartBeat;
+  animation-duration: 2s;
 }
 
+.subtitle1 {
+  text-align: center;
+  height: 9cm;
+  margin-bottom: 20px;
+  color: #6F4E37;
+  font-size: 30px;
+}
 
-  
-  .account-form label {
-    margin-bottom: 10px;
-  }
-  
-  .account-form input {
-    margin-bottom: 20px;
+.centered-input {
+  display: block;
+  height: 2cm;
+  margin-bottom: 20px;
+  width: calc(100% - 20px);
+}
+
+.centered-input input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.submit-button1 {
     padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-  }
-  
-  .submit-button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #6F4E37;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-  }
-  
-  .submit-button:hover {
-    background-color: #45a049;
-  }
+    width: 100%;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    box-sizing: border-box;
+    margin-top: 8px;
 
-  .title, .subtitle {
-    font-family: 'Arial', sans-serif;
-    font-size: 2.5em;
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
+}
 
-  .centered-input {
-    margin: 0 auto;
-    display: block;
-  }
+.submit-button1:hover {
+  background-color: #000000;
+}
+
+a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: #CD7F32;
+  transition: background-color 0.3s ease;
+}
+
+a:hover{
+    color: #000;
+}

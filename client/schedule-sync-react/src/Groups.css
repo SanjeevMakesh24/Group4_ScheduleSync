@@ -4,7 +4,7 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #ca7e5e;
   }
   
   .user-groups-title {
@@ -22,24 +22,25 @@
   .group-button, .create-group-button {
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
+    border-radius: 10px;
+    background-color: #a5694f;
+    border-color: #333;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
   }
   
   .group-button:hover, .create-group-button:hover {
-    background-color: #0056b3;
+    background-color: #82513c;
   }
   
   .create-group-button {
     margin-top: 20px;
-    background-color: #28a745;
+    background-color: #6F4E37;
   }
   
   .create-group-button:hover {
-    background-color: #218838;
+    background-color: #000;
   }
   
   .back-button {
@@ -47,8 +48,8 @@
     top: 20px;
     left: 20px;
     padding: 10px 15px;
-    background-color: #ccc;
-    color: #333;
+    background-color: #37271b;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;

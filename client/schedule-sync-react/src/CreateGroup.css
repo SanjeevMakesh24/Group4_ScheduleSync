@@ -30,14 +30,14 @@
     padding: 10px 15px;
     border: none;
     color: white;
-    background-color: #007BFF;
+    background-color: #6F4E37;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease;
   }
   
   .create-group-btn:hover, .add-friends-btn:hover {
-    background-color: #0056b3;
+    background-color: #000;
   }
   
   .selected-friends {
@@ -52,7 +52,7 @@
   .friends-list li {
     margin: 5px 0;
     padding: 5px;
-    background-color: #eef;
+    background-color: #d29264a5;
     border-radius: 4px;
   }
   

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './EventForm.css'; // Ensure this is correctly imported
 
 const AddEventForm = ({ groupId }) => {
     const [title, setTitle] = useState('');
@@ -51,28 +52,28 @@ const AddEventForm = ({ groupId }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="title">Title:</label>
-                <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+        <form onSubmit={handleSubmit} className="event-form">
+            <div className="form-group">
+                <label htmlFor="title" className="form-label">Title:</label>
+                <input type="text" id="title" className="form-input" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
             </div>
 
-            <div>
-                <label htmlFor="start">Start:</label>
-                <input type="datetime-local" placeholder="Start" value={start} onChange={(e) => setStart(e.target.value)} required />
+            <div className="form-group">
+                <label htmlFor="start" className="form-label">Start:</label>
+                <input type="datetime-local" id="start" className="form-input" placeholder="Start" value={start} onChange={(e) => setStart(e.target.value)} required />
             </div>
 
-            <div>
-                <label htmlFor="end">End:</label>
-                <input type="datetime-local" placeholder="End" value={end} onChange={(e) => setEnd(e.target.value)} required />
+            <div className="form-group">
+                <label htmlFor="end" className="form-label">End:</label>
+                <input type="datetime-local" id="end" className="form-input" placeholder="End" value={end} onChange={(e) => setEnd(e.target.value)} required />
             </div>
 
-            <div>
-                <label htmlFor="description">Description:</label>
-                <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
+            <div className="form-group">
+                <label htmlFor="description" className="form-label">Description:</label>
+                <input type="text" id="description" className="form-input" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
             </div>
 
-            <button type="submit">Add Event</button>
+            <button type="submit" className="submit-button8">Add Event</button>
         </form>
     );
 };

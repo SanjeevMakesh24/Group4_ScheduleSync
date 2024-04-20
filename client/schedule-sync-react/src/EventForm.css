@@ -1,0 +1,76 @@
+/* General body styling */
+.body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Form styling */
+.event-form {
+    background: white;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Form div container styling for each input */
+.form-group {
+    margin-bottom: 10px;
+}
+
+/* Label styling */
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Input and button styling */
+.form-input, .submit-button {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* ensures padding doesn't affect width */
+    transition: border-color 0.3s;
+}
+
+/* Enhance focus visibility */
+.form-input:focus {
+    border-color: #0056b3;
+    outline: none; /* removes default focus outline */
+}
+
+/* Button styling for submitting form */
+.submit-button8 {
+    background-color: #6F4E37;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.submit-button8:hover {
+    background-color: #000;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    form {
+        margin: 10px;
+        padding: 10px;
+    }
+}

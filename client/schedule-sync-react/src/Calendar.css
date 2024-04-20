@@ -18,11 +18,11 @@
 
 .my-calendar .fc-toolbar-title {
   font-size: 24px; /* Title font size */
-  color: #4a54e1; /* Title color */
+  color: #6F4E37; /* Title color */
 }
 
 .my-calendar .fc-button {
-  background-color: #5c67f2; /* Button background color */
+  background-color: #6F4E37; /* Button background color */
   color: #fff; /* Button text color */
   border: none;
   padding: 8px 12px;
@@ -31,7 +31,7 @@
 }
 
 .my-calendar .fc-button:hover {
-  background-color: #4a54e1; /* Button hover state */
+  background-color: #000; /* Button hover state */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -64,7 +64,8 @@
   left: 250px;
   padding: 10px;
 }
-/* 
-body {
-  background-image: linear-gradient(to right, rgb(237, 191, 42), rgb(43, 38, 5));
-} */
+
+.fc-event {
+  background-color: #ad7b58;
+  border: none;
+}
